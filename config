@@ -4,7 +4,6 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
-
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -26,6 +25,11 @@ bindsym Mod1+Control+s exec i3lock -c 000000 && dbus-send --system --print-reply
 # switch workspaces by mod+ctrl+left/right
 bindsym Mod1+Control+Left workspace prev
 bindsym Mod1+Control+Right workspace next
+
+# Keyboard backlight shortcuts
+bindsym XF86KbdBrightnessUp exec "file=/sys/class/leds/asus::kbd_backlight/brightness; val=`cat $file`; if [ $val -lt 3 ]; then echo `expr $val + 1` > $file; fi"
+bindsym XF86KbdBrightnessDown exec "file=/sys/class/leds/asus::kbd_backlight/brightness; val=`cat $file`; if [ $val -gt 0 ]; then echo `expr $val - 1` > $file; fi" 
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
